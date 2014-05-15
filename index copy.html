@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+  </head>
+
+  <body>
+	<!-- Side Menu -->
+    <div style="margin-top:20px">
+    <div class="row">
+    <script  type="text/html" id="template">
+          <div class="col-lg-3">
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-4">
+                    <i class="icon-comments icon-5x"></i>
+                  </div>
+                  <div class="col-xs-4 text-right">
+                    <p class="announcement-heading"  data-content="overdueOrders">20</p>
+                    <p class="announcement-text">Overdue</p>
+                  </div>
+                  <div class="col-xs-4 text-right">
+                    <p class="announcement-heading"  data-content="pendingOrder">10</p>
+                    <p class="announcement-text">Pending</p>
+                  </div>
+                </div>
+              </div>
+              <a href="#">
+                <div class="panel-footer announcement-bottom">
+                  <div class="row">
+                    <div class="col-xs-6" data-content="city"> </div>
+                    <div class="col-xs-6 text-right">
+                      <a href="#"> Call Hotel&nbsp;<i class="icon-circle-arrow-right"></a></i>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          </script>
+          <div id="template-container">
+          </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-load-template.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script> 
+	var jsonObject = JSON.parse('{"orderSummary": [{"address": "address bangalore1","city": "Bangalore","email": "bangalore1@nnd.com","locationId": "bangalore1","overdueOrders": 5,"pendingOrders": 10,"phoneNumber": "9880281322"},{"address": "address bangalore2","city": "Bangalore","email": "bangalore2@nnd.com","locationId": "bangalore2","overdueOrders": 3,"pendingOrders": 12,"phoneNumber": "9008836735"}]}');
+	console.log(jsonObject);
+    $.each(jsonObject, function(key,val){
+    	var node = "<div id='template-container-" + key + "'></div>";
+    	$("#template-container").append(node);
+        $("#template-container-" + key).loadTemplate($("#template"), val);
+    });
+    </script>
+  </body>
+</html>
